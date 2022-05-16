@@ -3,3 +3,4 @@ Flask-Login>=0.6.1
 Flask-SQLAlchemy>=2.5.1
 coverage
 requests>=2.27.1
+pytest

@@ -15,4 +15,15 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
     first_name = db.Column(db.String(150))
+    patient = db.Column(db.Boolean)
+    doctor = db.Column(db.Boolean)
+    admin = db.Column(db.Boolean)
     notes = db.relationship('Note')
+
+
+class Device(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    patient_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    device_type = db.Column(db.String(50))
+
+

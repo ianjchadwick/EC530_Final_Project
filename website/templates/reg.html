@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block title %}Registration{% endblock %}
+
+{% block content %}
+<form method="POST">
+    <h3 align="center">Registration Form</h3>
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text"
+               class="form-control"
+               id="firstName"
+               name="firstName"
+               placeholder="Enter first name"
+        />
+    </div>
+    <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text"
+               class="form-control"
+               id="lastName"
+               name="lastName"
+               placeholder="Enter last name"
+        />
+    </div>
+    <div class="form-group">
+        <label for="DOB">Date of Birth</label>
+        <input type="date"
+               class="form-control"
+               id="DOB"
+               name="DOB"
+        />
+    </div>
+    <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email"
+               class="form-control"
+               id="email"
+               name="email"
+               placeholder="Enter email"
+        />
+    </div>
+    <div class="form-group">
+        <label for="phone">Enter a phone number:</label>
+        <input type="tel"
+               class="form-control"
+               id="phone"
+               name="phone"
+               placeholder="123-456-789"
+               pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"
+               required
+        />
+    </div>
+    <div class="form-group">
+        <label for="street">Street</label>
+        <input type="text"
+               class="form-control"
+               id="street"
+               name="street"
+               placeholder="123 Main St."
+               maxlength="50"
+        />
+    <div class="form-group">
+        <label for="city">City</label>
+        <input type="text"
+               class="form-control"
+               id="city"
+               name="city"
+               placeholder="Boston"
+               maxlength="50"
+        />
+    </div>
+    <div class="form-group">
+        <label for="state">State Code</label>
+        <input type="text"
+               class="form-control"
+               id="state"
+               name="state"
+               placeholder="MA"
+               maxlength="2"
+        />
+    </div>
+    <div class="form-group">
+        <label for="zip">Zip Code</label>
+        <input type="number"
+               oninput="if((this.value.length) > 5) { this.value = this.value.substring(0, 5); }"
+               class="form-control"
+               id="zip"
+               name="zip"
+               placeholder="12345"
+               maxlength="5"
+        />
+    </div>
+    <div class="form-group">
+        <label for="password1">Password</label>
+        <small><i>(Passwords must be at least 7 characters)</i></small>
+        <input type="password"
+               class="form-control"
+               id="password1"
+               name="password1"
+               placeholder="Enter password"
+        />
+    </div>
+    <div class="form-group">
+        <label for="password2">Confirm Password</label>
+        <input type="password"
+               class="form-control"
+               id="password2"
+               name="password2"
+               placeholder="Confirm password"
+        />
+    </div>
+    <div class="form-group">
+        <h6>Please select a user role.</h6>
+        <label>I am a:</label><br>
+        <input type="checkbox" id="role1" name="role1" value="patient">
+          <label for="role1"> Patient</label><br>
+          <input type="checkbox" id="role2" name="role2" value="doctor">
+          <label for="role2"> Doctor</label><br>
+          <input type="checkbox" id="role3" name="role3" value="admin">
+          <label for="role3"> Administrator</label>
+    </div>
+    <br/>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{%endblock%}

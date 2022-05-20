@@ -2,10 +2,105 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<h1 align="center" xmlns="http://www.w3.org/1999/html">Welcome, {{user.first_name}}.</h1>
+{% with contact = user.contact[0] %}
+{% with roles = user.roles[0] %}
+<h1 align="center" xmlns="http://www.w3.org/1999/html">
+    Welcome, {%if roles.doctor%}Dr. {{user.last_name}}.{%else%}{{user.first_name}}.{%endif%}</h1>
 <h3>My Information</h3>
+<br/>
+<div class="container-sm">
+    <div class="row">
+     <div class="col-sm-2">
+         <h5>User</h5>
+         <h5>Information</h5>
+    </div>
+        <div class="col-sm-9">
+            <div class="row">
+                <div class="col-2 col-sm-2">
+                    Name:
+                </div>
+                <div class="col-1 col-sm-1">
+                    {{user.first_name}}
+                </div>
+                <div class="col-1 col-sm-1">
+                    {{user.last_name}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2 col-sm-2">
+                    Date of Birth:
+                </div>
+                <div class="col-4 col-sm-6">
+                    {{user.DOB}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2 col-sm-2">
+                    Email:
+                </div>
+                <div class="col-4 col-sm-6">
+                    {{user.email}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2 col-sm-2">
+                    Roles:
+                </div>
+                {%if roles.patient%}
+                <div class="col-2 col-sm-2">
+                    {{roles.patient}}
+                </div>
+                {%endif%}
+                {%if roles.doctor%}
+                <div class="col-2 col-sm-2">
+                    {{roles.doctor}}
+                </div>
+                {%endif%}
+                {%if roles.admin%}
+                <div class="col-2 col-sm-2">
+                    {{roles.admin}}
+                </div>
+                {%endif%}
+            </div>
+  </div>
+</div>
+</div>
+<br/>
+
+<div class="container-sm">
+  <div class="row">
+    <div class="col-sm-2">
+      <h5>Address</h5>
+    </div>
+        <div class="col-sm-9">
+            <div class="row">
+                <div class="col-2 col-sm-2">
+                    Street:
+                </div>
+                <div class="col-4 col-sm-6">
+                    {{contact.street}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2 col-sm-2">
+                    City, State, Zip:
+                </div>
+                <div class="col-2 col-sm-2">
+                    {{contact.city}}
+                </div>
+                <div class="col-2 col-sm-2">
+                    {{contact.state}}
+                </div>
+                <div class="col-2 col-sm-2">
+                    {{contact.zip}}
+                </div>
+            </div>
+    </div>
+  </div>
+</div>
+<br/>
 <table class="table-responsive table-responsive-flush">
-    <table class="table table-bordered">
+    <table class="table">
             <thead>
                 <tr>
                     <th scope="col" width="5%" align="center">#</th>
@@ -39,4 +134,6 @@
         <button type="submit" class="btn btn-primary">Add Note</button>
     </div>
 </form>
+{%endwith%}
+{%endwith%}
 {%endblock%}

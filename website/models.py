@@ -21,6 +21,7 @@ class User(db.Model, UserMixin):
     notes = db.relationship('Note')
     contact = db.relationship('Contact')
     weight = db.relationship('HeightWeight')
+    temp = db.relationship('Temperature')
 
 
 class Role(db.Model):
@@ -54,5 +55,15 @@ class HeightWeight(db.Model):
     height_ft = db.Column(db.Integer)
     height_in = db.Column(db.Integer)
     date = db.Column(db.DateTime(timezone=True), default=func.now())
+
+
+class Temperature(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    date = db.Column(db.DateTime(timezone=True), default=func.now())
+    temperature = db.Column(db.Float)
+
+
+
 
 

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Temperature{% endblock %}
+
+{% block content %}
+<form method="POST">
+    <h3 align="center">Temperature</h3>
+    <h4>Add New Measurement</h4>
+    <div class="form-group">
+        <h5>Temperature</h5>
+        <div class="col"></div>
+        <div class="row">
+              <div class="col">
+                <label for="temperature">Fahrenheit</label>
+                <input type="number"
+                       class="form-control"
+                       id="temperature"
+                       name="temperature"
+                       placeholder="98.6"
+                       step="0.1"
+                       min="0"
+                       max="120"
+                />
+              </div>
+        </div>
+    </div>
+    <br/>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<br/>
+<h4>Measurements</h4>
+<table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col" width="30%" align="center">Date</th>
+                <th scope="col" width="50%" align="center">Temperature Reading</th>
+                <th scope="col" width="20%" align="center" >Delete</th>
+            </tr>
+        </thead>
+        {%for measurement in user.temp%}
+        <tbody>
+            <tr>
+                <th scope="row">{{measurement.date}}</th>
+                <td>{{measurement.temperature}}</td>
+                <td>
+                    <div align="center">
+                        <button type="button" class="close" onClick="deleteTemp({{ measurement.id }})">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        {%endfor%}
+        </tbody>
+    </table>
+</table>
+{%endblock%}

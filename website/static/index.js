@@ -15,3 +15,12 @@ function deleteWeight(weightId){
              window.location.href ="/weight"; // redirect to the weight page
            });
 }
+
+function deleteTemp(tempId){
+    fetch('/delete-temp', { //send a request to endpoint
+           method: 'POST',
+           body: JSON.stringify({ tempId: tempId})
+           }).then((_res) => {
+             window.location.href ="/temp"; // redirect to the weight page
+           });
+}

@@ -1,7 +1,7 @@
 # Stores all the views that the user can navigate to, except the authentication page which is in auth
 from flask_login import login_required, current_user
 from flask import Blueprint, render_template, request, flash, jsonify
-from.models import Note, HeightWeight
+from.models import Note, HeightWeight, Temperature
 from . import db
 import json
 
@@ -43,6 +43,18 @@ def delete_weight():
     if weight:
         if weight.user_id == current_user.id:
             db.session.delete(weight)
+            db.session.commit()
+
+    return jsonify({})
+
+@views.route('/delete-temp', methods=['POST'])
+def delete_temp():
+    temp = json.loads(request.data) # get data from post request
+    tempId = temp['tempId']
+    temp = Temperature.query.get(tempId)
+    if temp:
+        if temp.user_id == current_user.id:
+            db.session.delete(temp)
             db.session.commit()
 
     return jsonify({})

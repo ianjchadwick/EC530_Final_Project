@@ -7,11 +7,9 @@ from flask_login import login_user, login_required, logout_user, current_user
 measurement = Blueprint('measurements', __name__)
 
 
-@measurement.route('/measurement', methods=['GET', 'POST'])
+@measurement.route('/measurement', methods=['GET'])
 @login_required
 def measure_main():
-    if request.method == 'POST':
-        pass
     return render_template('measurements.html', user=current_user)
 
 

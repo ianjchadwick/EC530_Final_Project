@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}Height and Weight{% endblock %}
+
+{% block content %}
+<form method="POST">
+    <h3 align="center">Height and Weight</h3>
+    <h4>Add New Measurement</h4>
+    <div class="form-group">
+        <h5>Height</h5>
+        <div class="col"></div>
+        <div class="row">
+              <div class="col">
+                <label for="height_ft">Feet</label>
+                <input type="number"
+                       class="form-control"
+                       id="height_ft"
+                       name="height_ft"
+                       placeholder="5"
+                       min="0"
+                       max="9"
+                />
+              </div>
+              <div class="col">
+                  <label for="height_in">Inches <small><i>(round up)</i></small></label></label>
+                    <input type="number"
+                           class="form-control"
+                           id="height_in"
+                           name="height_in"
+                           placeholder="8"
+                           min="0"
+                           max="11"
+                    />
+              </div>
+        </div>
+    </div>
+    <h5>Weight</h5>
+    <div class="form-group">
+        <label for="weight">In pounds<small><i> (to 2 decimal places)</i></small></label>
+        <input type="number"
+               step="0.01"
+               class="form-control"
+               id="weight"
+               name="weight"
+               placeholder="150"
+               min="0"
+               max="999"
+        />
+    </div>
+    <br/>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<br/>
+<h4>Measurements</h4>
+<table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col" width="22.5%" align="center">Date</th>
+                <th scope="col" width="22.5%" align="center">Feet</th>
+                <th scope="col"width="22.5%" align="center">Inches</th>
+                <th scope="col"width="22.5%" align="center">Weight</th>
+                <th scope="col" width="10%" align="center" >Delete</th>
+            </tr>
+        </thead>
+        {%for measurement in user.weight%}
+        <tbody>
+            <tr>
+                <th scope="row">{{measurement.date}}</th>
+                <td>{{measurement.height_ft}}</td>
+                <td>{{measurement.height_in}}</td>
+                <td>{{measurement.weight}}</td>
+                <td>
+                    <div align="center">
+                        <button type="button" class="close" onClick="deleteWeight({{ measurement.id }})">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        {%endfor%}
+        </tbody>
+    </table>
+</table>
+{%endblock%}

@@ -23,30 +23,30 @@
         </button>
         <div class="collapse navbar-collapse" id="navbar">
             <div class="navbar-nav">
+                {% if user.is_authenticated%}
                 {%with roles = user.roles[0]%}
                 {%with patient = roles.patient%}
                 {%with doctor = roles.doctor%}
                 {%with admin = roles.admin%}
-                {% if user.is_authenticated%}
                 <a class="nav-item nav-link" id="home" href="/">Home</a>
                 {% if doctor %}
                 <a class="nav-item nav-link" id="doctor_home" href="/">Doctor Portal</a>
                 {%endif%}
                 {% if patient %}
-                <a class="nav-item nav-link" id="patient_home" href="/">Patient Portal</a>
+                <a class="nav-item nav-link" id="measurement_home" href="/measurement">My Measurements</a>
                 {%endif%}
                 {% if admin %}
                 <a class="nav-item nav-link" id="admin_home" href="/">Admin Portal</a>
                 {%endif%}
                 <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
+                {% endwith %}
+                {% endwith %}
+                {% endwith %}
+                {% endwith %}
                 {% else %}
                 <a class="nav-item nav-link" id="login" href="/login">Login</a>
                 <a class="nav-item nav-link" id="signUp" href="/register">Register</a>
                 {% endif %}
-                {% endwith %}
-                {% endwith %}
-                {% endwith %}
-                {% endwith %}
             </div>
         </div>
     </nav>

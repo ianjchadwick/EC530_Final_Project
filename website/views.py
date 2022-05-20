@@ -1,7 +1,7 @@
 # Stores all the views that the user can navigate to, except the authentication page which is in auth
 from flask_login import login_required, current_user
 from flask import Blueprint, render_template, request, flash, jsonify
-from.models import Note
+from.models import Note, HeightWeight
 from . import db
 import json
 
@@ -21,6 +21,7 @@ def home():
             db.session.commit()
     return render_template("home.html", user=current_user)
 
+
 @views.route('/delete-note', methods=['POST'])
 def delete_note():
     note = json.loads(request.data) # get data from post request
@@ -29,6 +30,19 @@ def delete_note():
     if note:
         if note.user_id == current_user.id:
             db.session.delete(note)
+            db.session.commit()
+
+    return jsonify({})
+
+
+@views.route('/delete-weight', methods=['POST'])
+def delete_weight():
+    weight = json.loads(request.data) # get data from post request
+    weightId = weight['weightId']
+    weight = HeightWeight.query.get(weightId)
+    if weight:
+        if weight.user_id == current_user.id:
+            db.session.delete(weight)
             db.session.commit()
 
     return jsonify({})

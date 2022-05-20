@@ -20,6 +20,7 @@ class User(db.Model, UserMixin):
     roles = db.relationship('Role')
     notes = db.relationship('Note')
     contact = db.relationship('Contact')
+    weight = db.relationship('HeightWeight')
 
 
 class Role(db.Model):
@@ -44,5 +45,14 @@ class Device(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     patient_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     device_type = db.Column(db.String(50))
+
+
+class HeightWeight(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    weight = db.Column(db.Float)
+    height_ft = db.Column(db.Integer)
+    height_in = db.Column(db.Integer)
+    date = db.Column(db.DateTime(timezone=True), default=func.now())
 
 

@@ -16,12 +16,14 @@ def create_app():
     # Importing Blueprints
     from .views import views
     from .auth import auth
+    from .measurements import measurement
 
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
+    app.register_blueprint(measurement, url_prefix='/')
 
     # Set-up database
-    from .models import User, Note
+    from .models import User, Role, Contact
 
     create_database(app)
 

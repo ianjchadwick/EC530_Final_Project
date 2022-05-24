@@ -2,20 +2,116 @@
 {% block title %}My Measurements{% endblock %}
 
 {% block content %}
-<h3 align="center">Select A Measurement Type</h3>
+<h3 align="center">Measurements</h3>
+<br/>
+<h4>Add A New Measurement</h4>
 <br/>
 <div align="center" class="container">
   <div class="row">
     <div class="col">
-    <a class="btn btn-primary" href="/weight" role="button">Height and Weight</a>
+      <a class="btn btn-primary" href="/weight" role="button">Height and Weight</a>
     </div>
     <div class="col">
-    <a class="btn btn-primary" href="/temp" role="button">Temperature</a>
+      <a class="btn btn-primary" href="/temp" role="button">Temperature</a>
     </div>
     <div class="col">
-      Column
+      <a class="btn btn-primary" href="/bp" role="button">Blood Pressure</a>
+    </div>
+    <div class="col">
+      <a class="btn btn-primary" href="/glucose" role="button">Blood Glucose</a>
     </div>
   </div>
 </div>
 <br/>
+<h4>Most Recent Measurements</h4>
+{%if user.weight%}
+<br/>
+<h5>Height and Weight</h5>
+<table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col" width="25%" align="center">Date</th>
+                <th scope="col" width="25%" align="center">Height<small> (feet)</small></th>
+                <th scope="col" width="25%" align="center">Height<small> (inches)</small></th>
+                <th scope="col" width="25%" align="center">Weight<small> (lbs)</small></th>
+            </tr>
+        </thead>
+        {%with measurement = user.weight[0]%}
+        <tbody>
+            <tr>
+                <th scope="row">{{measurement.date}}</th>
+                <td>{{measurement.height_ft}}</td>
+                <td>{{measurement.height_in}}</td>
+                <td>{{measurement.weight}}</td>
+            </tr>
+        {%endwith%}
+        </tbody>
+    </table>
+</table>
+{%endif%}
+{%if user.temp%}
+<br/>
+<h5>Temperature</h5>
+<table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col" width="25%" align="center">Date</th>
+                <th scope="col" width="75%" align="center">Temperature<small> (Fahrenheit)</small></th>
+            </tr>
+        </thead>
+        {%with measurement = user.temp[0]%}
+        <tbody>
+            <tr>
+                <th scope="row">{{measurement.date}}</th>
+                <td>{{measurement.temperature}}</td>
+            </tr>
+        {%endwith%}
+        </tbody>
+    </table>
+</table>
+{%endif%}
+{%if user.bp%}
+<br/>
+<h5>Blood Pressure</h5>
+<table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col" width="25%" align="center">Date</th>
+                <th scope="col" width="37.5%" align="center">Systolic Reading<small> (mm Hg)</small></th>
+                <th scope="col" width="37.5%" align="center">Diastolic Reading<small> (mm Hg)</small></th>
+            </tr>
+        </thead>
+        {%with measurement = user.bp[0]%}
+        <tbody>
+            <tr>
+                <th scope="row">{{measurement.date}}</th>
+                <td>{{measurement.systolic}}</td>
+                <td>{{measurement.diastolic}}</td>
+            </tr>
+        {%endwith%}
+        </tbody>
+    </table>
+</table>
+{%endif%}
+{%if user.glucose%}
+<br/>
+<h5>Blood Glucose</h5>
+<table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col" width="25%" align="center">Date</th>
+                <th scope="col" width="75" align="center">Blood Glucose <small> (mg/dL)</small></th>
+            </tr>
+        </thead>
+        {%with measurement = user.glucose[0]%}
+        <tbody>
+            <tr>
+                <th scope="row">{{measurement.date}}</th>
+                <td>{{measurement.glucose}}</td>
+            </tr>
+        {%endwith%}
+        </tbody>
+    </table>
+</table>
+{%endif%}
 {%endblock%}

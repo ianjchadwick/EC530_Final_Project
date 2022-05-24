@@ -20,8 +20,10 @@ class User(db.Model, UserMixin):
     roles = db.relationship('Role')
     notes = db.relationship('Note')
     contact = db.relationship('Contact')
-    weight = db.relationship('HeightWeight')
-    temp = db.relationship('Temperature')
+    weight = db.relationship('HeightWeight', order_by="HeightWeight.date.desc()")
+    temp = db.relationship('Temperature', order_by="Temperature.date.desc()")
+    bp = db.relationship('BloodPressure', order_by="BloodPressure.date.desc()")
+    glucose = db.relationship('Glucose', order_by="Glucose.date.desc()")
 
 
 class Role(db.Model):
@@ -63,6 +65,20 @@ class Temperature(db.Model):
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     temperature = db.Column(db.Float)
 
+
+class BloodPressure(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    date = db.Column(db.DateTime(timezone=True), default=func.now())
+    systolic = db.Column(db.Integer)
+    diastolic = db.Column(db.Integer)
+
+
+class Glucose(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    date = db.Column(db.DateTime(timezone=True), default=func.now())
+    glucose = db.Column(db.Integer)
 
 
 

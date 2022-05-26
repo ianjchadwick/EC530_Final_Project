@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Doctor Portal{% endblock %}
+{%block header%}
+
+{%endblock%}
+{% block content %}
+<h3 align="center">Doctor Portal</h3>
+<br/>
+<h4>Add A New Patient</h4>
+<br/>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <a class="btn btn-primary" href="/patient" role="button">Add Patient</a>
+    </div>
+  </div>
+</div>
+<br/>
+<h4>Current Patients</h4>
+<table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col" width="15%" align="center">User Id</th>
+                <th scope="col" width="35%" align="center">First Name</th>
+                <th scope="col" width="35%" align="center">Last Name</th>
+                <th scope="col" width="15%" align="center" >Delete</th>
+            </tr>
+        </thead>
+    {%for patient in user.patients%}
+      <tbody>
+        <tr>
+            <th scope="row">{{patient.patient_id}}</th>
+            <td>{{patient.first_name}}</td>
+            <td>{{patient.last_name}}</td>
+            <td>
+                <div align="center">
+                    <button type="button" class="close" onClick="removePatient({{ patient.id }})">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </td>
+        </tr>
+    {%endfor%}
+  </tbody>
+</table>
+{%endblock%}

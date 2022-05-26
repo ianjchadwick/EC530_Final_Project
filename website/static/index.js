@@ -39,6 +39,24 @@ function deleteGlucose(glucoseId){
            method: 'POST',
            body: JSON.stringify({ glucoseId: glucoseId})
            }).then((_res) => {
-             window.location.href ="/glucose"; // redirect to the blood pressure page
+             window.location.href ="/glucose"; // redirect to the glucose page
+           });
+}
+
+function addPatient(patientId){
+    fetch('/add-patient', { //send a request to endpoint
+           method: 'POST',
+           body: JSON.stringify({ patientId: patientId})
+           }).then((_res) => {
+             window.location.href ="/doctor"; // redirect to the doctor portal
+           });
+}
+
+function removePatient(patientId){
+    fetch('/remove-patient', { //send a request to endpoint
+           method: 'POST',
+           body: JSON.stringify({ patientId: patientId})
+           }).then((_res) => {
+             window.location.href ="/doctor"; // redirect to the doctor portal
            });
 }

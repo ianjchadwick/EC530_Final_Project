@@ -18,12 +18,12 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(150))
     DOB = db.Column(db.String(8))
     roles = db.relationship('Role')
-    notes = db.relationship('Note')
     contact = db.relationship('Contact')
     weight = db.relationship('HeightWeight', order_by="HeightWeight.date.desc()")
     temp = db.relationship('Temperature', order_by="Temperature.date.desc()")
     bp = db.relationship('BloodPressure', order_by="BloodPressure.date.desc()")
     glucose = db.relationship('Glucose', order_by="Glucose.date.desc()")
+    patients = db.relationship('Patients', order_by="Patients.last_name")
 
 
 class Role(db.Model):
@@ -79,6 +79,15 @@ class Glucose(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     glucose = db.Column(db.Integer)
+
+
+class Patients(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    doctor_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    patient_id = db.Column(db.Integer, unique=True)
+    first_name = db.Column(db.String(150))
+    last_name = db.Column(db.String(150))
+
 
 
 

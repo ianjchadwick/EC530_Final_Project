@@ -48,7 +48,7 @@ function addPatient(patientId){
            method: 'POST',
            body: JSON.stringify({ patientId: patientId})
            }).then((_res) => {
-             window.location.href ="/doctor"; // redirect to the doctor portal
+             window.location.href ="/patient"; // redirect to the doctor portal
            });
 }
 
@@ -57,6 +57,6 @@ function removePatient(patientId){
            method: 'POST',
            body: JSON.stringify({ patientId: patientId})
            }).then((_res) => {
-             window.location.href ="/doctor"; // redirect to the doctor portal
+             window.location.href ="/patient"; // redirect to the doctor portal
            });
 }

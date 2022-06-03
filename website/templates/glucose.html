@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Glucose{% endblock %}
+
+{% block content %}
+<form method="POST">
+    <h3 align="center">Blood Glucose</h3>
+    <h4>Add New Measurement</h4>
+    <div class="form-group">
+        <div class="col"></div>
+        <div class="row">
+              <div class="col">
+                <label for="glucose">Blood Glucose <small> (mg/dL)</small></label>
+                <input type="number"
+                       class="form-control"
+                       id="glucose"
+                       name="glucose"
+                       placeholder="85"
+                       min="0"
+                       max="300"
+                />
+              </div>
+        </div>
+    </div>
+    <br/>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<br/>
+<h4>Measurements</h4>
+<table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col" width="30%" align="center">Date</th>
+                <th scope="col" width="50%" align="center">Blood Glucose Reading</th>
+                <th scope="col" width="20%" align="center" >Delete</th>
+            </tr>
+        </thead>
+        {%for measurement in user.glucose%}
+        <tbody>
+            <tr>
+                <th scope="row">{{measurement.date}}</th>
+                <td>{{measurement.glucose}}</td>
+                <td>
+                    <div align="center">
+                        <button type="button" class="close" onClick="deleteGlucose({{ measurement.id }})">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        {%endfor%}
+        </tbody>
+    </table>
+</table>
+{%endblock%}

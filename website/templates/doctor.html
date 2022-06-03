@@ -44,7 +44,7 @@
 </div>
 {%if patient.weight%}
 <div id="height{{patient.id}}" class="collapse">
-    {%with measurement = user.weight[0]%}
+    {%with measurement = patient.weight[0]%}
     <div class="container">
       <div class="row row-cols-auto">
         <div class="col"><strong>Height/Weight:</strong></div>
@@ -66,7 +66,7 @@
 <br/>
 {%if patient.glucose%}
 <div id="glucose{{patient.id}}" class="collapse">
-    {%with measurement = user.glucose[0]%}
+    {%with measurement = patient.glucose[0]%}
     <div class="container">
       <div class="row row-cols-auto">
         <div class="col"><strong>Glucose: </strong></div>
@@ -86,7 +86,7 @@
 <br/>
 {%if patient.temp%}
 <div id="temp{{patient.id}}" class="collapse">
-    {%with measurement = user.temp[0]%}
+    {%with measurement = patient.temp[0]%}
     <div class="container">
       <div class="row row-cols-auto">
         <div class="col"><strong>Temperature: </strong></div>
@@ -106,7 +106,7 @@
 <br/>
 {%if patient.bp%}
 <div id="bp{{patient.id}}" class="collapse">
-    {%with measurement = user.bp[0]%}
+    {%with measurement = patient.bp[0]%}
     <div class="container">
       <div class="row row-cols-auto">
         <div class="col"><strong>Blood Pressure: </strong></div>

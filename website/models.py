@@ -35,6 +35,7 @@ class Contact(db.Model):
     zip = db.Column(db.String(5))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
+
 class HeightWeight(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))

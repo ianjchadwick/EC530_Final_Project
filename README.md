@@ -32,4 +32,6 @@ The app utilizes Flask and SQLAlchemy for the database API. Each of the endpoint
 #### /register
 Methods: GET, POST
 
-JSON input:![image](https://user-images.githubusercontent.com/13345034/171964198-67e07bd9-b13c-4727-82c1-c3f054a1eab0.png)
+JSON input:
+
+![image](https://user-images.githubusercontent.com/13345034/171964198-67e07bd9-b13c-4727-82c1-c3f054a1eab0.png)

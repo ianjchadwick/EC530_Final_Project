@@ -35,13 +35,6 @@ class Contact(db.Model):
     zip = db.Column(db.String(5))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-
-class Device(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    patient_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    device_type = db.Column(db.String(50))
-
-
 class HeightWeight(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))

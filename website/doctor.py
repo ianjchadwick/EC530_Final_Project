@@ -7,7 +7,7 @@ import json
 doctor = Blueprint('doctor', __name__)
 
 
-@doctor.route('/doctor', methods=['POST', 'GET'])
+@doctor.route('/doctor', methods=['GET'])
 @login_required
 def doctor_main():
     if current_user.roles[0].doctor:
@@ -29,18 +29,3 @@ def patient_mgmt():
     else:
         return render_template('home.html', user=current_user)
 
-
-@doctor.route('/view-patient', methods=['POST', 'GET'])
-@login_required
-def view_patient():
-    if current_user.roles[0].doctor:
-        if request.method == 'POST':
-            patientId = request.form.get('patientId')
-            print(patientId)
-            # patientId = patient['patientId']
-            patient = User.query.get(patientId)
-            print(patient)
-            return render_template('view-patient.html', patient=patient, user=current_user)
-        return render_template('view-patient.html', patient='', user=current_user)
-    else:
-        return render_template('home.html', user=current_user)

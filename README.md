@@ -28,7 +28,7 @@ The database was managed using SQLite and SQLAlchemy. The database model for the
 The app utilizes Flask requests and SQLAlchemy for the database API. Each of the endpoints are described below. Note, some of the pages require the user to be logged in to access (utlizing Flask-Login). This is to ensure the data is associated with the correct user:
 
 ### Authentication
-These endpoints allow the user to create a new account and log into an existing account.
+These endpoints in auth.py allow the user to create a new account and log into an existing account.
 
 #### /register
 - Registers a new user. Adds user to database and contact information to contact table. All fields are required.
@@ -52,7 +52,7 @@ These endpoints allow the user to create a new account and log into an existing 
 ![image](https://user-images.githubusercontent.com/13345034/171971102-127274b6-a012-46b9-8606-7506f54030b9.png)
 
 ### Measurements
-These endpoints allow a user with the "patient" role to enter in measurements and readings for height and weight, temperature, blood pressure and blood glucose.
+These endpoints in measurements.py and views.py allow a user with the "patient" role to enter in measurements and readings for height and weight, temperature, blood pressure and blood glucose.
 
 #### /measurement
 - The main measurement page that displays the user's most recent measurements for each of the different types (height and weight, temperature, etc.). This page also has the links to the other pages for recording measurements and readings.
@@ -132,7 +132,7 @@ These endpoints allow a user with the "patient" role to enter in measurements an
 ![image](https://user-images.githubusercontent.com/13345034/172022159-4764cc37-32cc-45ca-bbc4-3818820319f7.png)
 
 ### Patient Management
-These endpoints allow the users with the "doctor" role to manage their patients and to view their latest measurements and readings.
+These endpoints in doctor.py and views.py allow the users with the "doctor" role to manage their patients and to view their latest measurements and readings.
 
 #### /doctor
 - Shows a list of the current patients with the latest measurements/readings for each of the categories in alphabetical order by last name. If they do not have a measurement/reading for a particular type then it will display "No Measurement" for that type. Also has a link to the patient management endpoint where doctors can add or remove patients.

@@ -30,8 +30,33 @@ The app utilizes Flask and SQLAlchemy for the database API. Each of the endpoint
 ### Authentication
 
 #### /register
-Methods: GET, POST
+- Registers a new user. Adds user to database and contact information to contact table. All fields are required.
+- Methods: GET, POST
 
-JSON input:
+- POST JSON input format:
 
 ![image](https://user-images.githubusercontent.com/13345034/171964198-67e07bd9-b13c-4727-82c1-c3f054a1eab0.png)
+
+#### /logout
+- Logs a user out if they are logged in.
+- (login required)
+- Methods: GET
+
+Logs user out using Flask-login
+
+#### /login
+- Logs a user in if the account exists, otherwise flashes an error if the password is incorrect or the the email is not in the database.
+- Methods: GET, POST
+
+- POST JSON input format:
+
+![image](https://user-images.githubusercontent.com/13345034/171971102-127274b6-a012-46b9-8606-7506f54030b9.png)
+
+### Measurements
+
+#### /weight
+- Allows users to enter in a height and weight. Also displays weight measurements by date in descending order.
+- Methods: GET, POST
+
+- POST JSON input format:
+

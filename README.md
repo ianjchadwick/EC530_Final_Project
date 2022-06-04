@@ -165,3 +165,35 @@ These endpoints in doctor.py and views.py allow the users with the "doctor" role
 - POST expected input format:
 
 ![image](https://user-images.githubusercontent.com/13345034/172023014-f3c0df24-dae6-4826-9eed-81e830cca8be.png)
+
+## Views and Pages
+
+### Login
+![image](https://user-images.githubusercontent.com/13345034/172023757-8f40f0ee-bc23-4ff9-b225-f7f116a87377.png)
+
+### Registration
+![image](https://user-images.githubusercontent.com/13345034/172023768-9b9f124f-e142-4388-bd38-e5ba71971e26.png)
+
+### Home
+![2022-06-04](https://user-images.githubusercontent.com/13345034/172023373-5200cdd0-a5a6-4e70-8d44-da435bfdebce.png)
+
+### Doctor Portal
+![image](https://user-images.githubusercontent.com/13345034/172023743-fd582c10-698a-43e5-a242-b49bc6f269ac.png)
+
+### Patient Management
+![image](https://user-images.githubusercontent.com/13345034/172023536-0c8a41f6-c159-41e9-accb-02563e29498e.png)
+
+### Measurements
+![image](https://user-images.githubusercontent.com/13345034/172023576-8dd1a3ae-4a5d-462f-882e-e0d8bf91f7d2.png)
+
+### Height and Weight
+![image](https://user-images.githubusercontent.com/13345034/172023603-1028b02d-c76a-47cf-8cc4-ccb8886b6f2d.png)
+
+### Temperature
+![image](https://user-images.githubusercontent.com/13345034/172023659-44911029-e40d-4b3e-990f-0791063c1f94.png)
+
+### Blood Pressure
+![image](https://user-images.githubusercontent.com/13345034/172023680-91aa3050-f9e8-4f40-b7d5-d64226c017e7.png)
+
+### Blood Glucose
+![image](https://user-images.githubusercontent.com/13345034/172023699-fec0b8cb-3ead-483e-84da-347a993d0a4a.png)
